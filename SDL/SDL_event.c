@@ -241,7 +241,12 @@ u32 update_input(event_input_struct *event_input)
 		event_input->action_type = INPUT_ACTION_TYPE_RELEASE;
         switch(event.key.keysym.sym)
         {
+#ifdef PG2_BUILD
+			// Menu Button for PG2
+			case SDLK_RCTRL:
+#else
 			case SDLK_HOME:
+#endif
 				event_input->action_type = INPUT_ACTION_TYPE_PRESS;
 				event_input->config_button_action = CONFIG_BUTTON_MENU;
 				return 1;
